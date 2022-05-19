@@ -1,0 +1,19 @@
+###
+GET http://localhost:3000/users HTTP/1.1
+
+###
+POST http://localhost:3000/users HTTP/1.1
+Content-Type: application/json
+
+{"name":"alice","age":23}
+
+###
+PUT http://localhost:3000/users/6286034fdac57b56e814a9e7 HTTP/1.1
+Content-Type: application/json
+
+{"name":"alice","age":23}
+
+###
+
+DELETE  http://localhost:3000/users/6286034fdac57b56e814a9e7 HTTP/1.1
+

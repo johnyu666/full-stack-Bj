@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="https://unpkg.com/react@18.1.0/umd/react.production.min.js"></script>
+    <script src="https://unpkg.com/react-dom@18.1.0/umd/react-dom.production.min.js"></script>
+    <script src="https://unpkg.com/babel-standalone@6.26.0/babel.js"></script>
+</head>
+
+<body>
+    <div id="app">
+
+    </div>
+    <script type="text/babel">
+        //使用函数式组件，取代Class组件
+
+        function App(props) {
+            //ReactHook
+            let [message,setMessage] =React.useState("Hello React!")
+            function change(){
+                setMessage("hello:"+Math.random())
+            }
+  
+            let div = <div><h1>{message}</h1>
+                <button onClick={change}>change me</button>
+            </div>
+            return div;
+        }
+        ReactDOM.render(<App />, document.querySelector("#app"))
+
+    </script>
+    <script type="text/babel">
+        //使用了响应式数据，完成了数据驱动式的开发方案
+        // class App extends React.Component {
+        //     constructor(props) {
+        //         super(props)
+        //         this.state = { message: "Hello React!" }
+        //         // this.change=this.change.bind(this)
+        //     }
+
+        //     render() {
+        //         let div = <div><h1>{this.state.message}</h1>
+        //             <button onClick={this.change}>change me</button>
+        //         </div>
+        //         return div;
+        //     }
+        //     change = () => {
+        //         this.setState({ message: "Hello: " + Math.random() })
+        //     }
+        // }
+        // ReactDOM.render(<App />, document.querySelector("#app"))
+
+
+
+    </script>
+
+
+    <script type="text/babel">
+        //前端编译JSX,Just In Time
+        // let messge = "Hello React!"
+        // function render() {
+        //     function change() {
+        //         messge = "Hello: " + Math.random()
+        //         render()
+        //     }
+        //     let div = <div><h1>{messge}</h1><button onClick={change}>change me</button></div>
+
+        //     ReactDOM.render(div, document.querySelector("#app"))
+        // }
+        // render()
+
+    </script>
+
+    <script>
+        //使用V DOM的方案
+        // let messge = "Hello React!"
+
+        // function render() {
+        //     function change() {
+        //         messge = "Hello: " + Math.random()
+        //         render()
+        //     }
+        //     let h1 = React.createElement("h1", {}, messge)
+        //     let btn = React.createElement("button", { onClick: change }, "change me")
+        //     let div = React.createElement("div", {}, [h1, btn])
+
+
+        //     //  ReactDOM.createRoot(document.querySelector("#app")).render(h1)
+        //     ReactDOM.render(div, document.querySelector("#app"))
+        // }
+        // render()
+
+    </script>
+</body>
+
+</html>

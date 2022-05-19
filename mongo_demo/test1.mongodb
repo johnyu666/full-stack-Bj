@@ -1,0 +1,35 @@
+show dbs;
+use bj2;
+db.books.find()
+db.books.insert({})
+db.books.insert({name:"book1"})
+db.books.insertMany([{name:"book22"},{name1:"book22"}])
+
+db.users.drop()
+for(let i=1;i<10;i++){
+   db.users.insert({_id:i,name:"user"+i,age:i*6}) 
+}
+db.users.find({})
+
+db.users.remove({_id:2});
+
+db.users.update({_id:3},{$set:{name:'bob'}})
+db.users.update({_id:3},{$inc:{age:-1}})
+
+db.users.replaceOne({_id:3},{_id:3,name:"tom1",age:76})
+
+db.users.find({age:{$lte:20}})
+db.users.find({age:{$gt:20,$lt:90}})
+db.users.find({$where:function(){
+   return this.age<30 || this.age>50
+}})
+db.users.find({name:{$regex:/1$/}})
+db.monkey.drop()
+db.monkey.insert({_id:1,name:'m1',fruit:['apple','bana','peach']}); db.monkey.insert({_id:2,name:'m2',fruit:['bana','peach','apple']}); db.monkey.insert({_id:3,name:'m3',fruit:['apple','peach']}); db.monkey.insert({_id:4,name:'m4',fruit:['kumquat','bana','peach']});
+
+db.monkey.find({fruit:{$all:["peach","apple"]}});
+
+db.monkey.find({fruit:{$size:2}})
+db.monkey.find({$where:function(){
+    return this.fruit.length==3
+}})
